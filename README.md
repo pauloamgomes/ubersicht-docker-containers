@@ -14,6 +14,8 @@ Get more widgets at [Übersicht](http://tracesof.net/uebersicht-widgets/)!
 Example
 -------
 
+ 
+
 ![Example!](screenshot.png)
 
 To enable, place the `dockercontainers.widget` folder in your
@@ -25,10 +27,10 @@ Usage
 -----
 
 Just start your docker containers as usual, widget will update and display
-details in the widget area.  
-  
-To restart a container you need to have the “Interaction Shortcut” enabled in
-the Übersicht preferences panel:
+details in the widget area.
+
+To restart a container (or open a terminal shell) you need to have the
+“Interaction Shortcut” enabled in the Übersicht preferences panel:
 
 ![](ubsersicht-settings.png)
 
