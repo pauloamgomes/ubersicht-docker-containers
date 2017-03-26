@@ -26,7 +26,7 @@ style: """
 			color: rgb(153, 227, 160)
 		&.stopped
 			color: rgb(244, 115, 94)
-	.restart
+	.restart, .shell
 		cursor: pointer
 		padding: 2px 4px
 		border: none
@@ -51,6 +51,11 @@ afterRender: (domEl) ->
  	image = $(target).attr 'data-image'
  	@run "dockercontainers.widget/helper.sh restart " + image
 
+ $(domEl).on 'click', '.shell', (e) =>
+  target = $(e.currentTarget)
+ 	image = $(target).attr 'data-image'
+ 	@run "dockercontainers.widget/helper.sh shell " + image
+
 update: (output, domEl) ->
 	machines 	= output.split("\n")
 	table = $(domEl).find('table')
@@ -63,7 +68,10 @@ update: (output, domEl) ->
 			<td>#{ image }</td>
 			<td>#{ size }</td>
 			<td class="status">#{ status }</td>
-			<td><button data-image="#{ image }" class="restart" >restart</button></td>
+			<td>
+				<button data-image="#{ image }" class="restart">restart</button>
+				<button data-image="#{ image }" class="shell">shell</button>
+			</td>
 		</tr>
 	"""
 
