@@ -26,17 +26,30 @@ style: """
 			color: rgb(153, 227, 160)
 		&.stopped
 			color: rgb(244, 115, 94)
+	.restart
+		cursor: pointer
+		padding: 2px 4px
+		border: none
+		border-radius: 5px
+		background-color: rgba(255, 255, 255, 0.8)
 """
 
 command: "dockercontainers.widget/helper.sh getStatus"
 
-refreshFrequency: (60000)
+refreshFrequency: 15000
 
 render: -> """
 	<div>
   	<table></table>
 	</div>
 """
+
+afterRender: (domEl) ->
+
+ $(domEl).on 'click', '.restart', (e) =>
+  target = $(e.currentTarget)
+ 	image = $(target).attr 'data-image'
+ 	@run "dockercontainers.widget/helper.sh restart " + image
 
 update: (output, domEl) ->
 	machines 	= output.split("\n")
@@ -50,6 +63,7 @@ update: (output, domEl) ->
 			<td>#{ image }</td>
 			<td>#{ size }</td>
 			<td class="status">#{ status }</td>
+			<td><button data-image="#{ image }" class="restart" >restart</button></td>
 		</tr>
 	"""
 
