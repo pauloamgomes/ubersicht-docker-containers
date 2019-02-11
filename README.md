@@ -21,7 +21,7 @@ Example
 To enable, place the `dockercontainers.widget` folder in your
 `Übersicht/widgets` directory.
 
- 
+ Note: The folder name must be `dockercontainers.widget` and should be inside the `Übersicht/widgets` folder.
 
 Usage
 -----
